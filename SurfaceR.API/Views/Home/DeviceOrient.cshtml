@@ -1,0 +1,71 @@
+﻿<div class="jumbotron p-4">
+    <div class="container">
+        <div class="intro">
+            <h2 class="text-center">SurfaceR</h2>
+            <p class="text-center">This device's orientation data is exchanged with SignalR.</p>
+        </div>
+        <div class="buttons text-center">
+            <a class="btn btn-primary" role="button" asp-controller="Home" asp-action="Cube">See in action</a>
+            <a asp-controller="Home" asp-action="DeviceOrient" class="btn btn-light" type="button">Device Controller</a>
+            <a asp-controller="Home" asp-action="Controls" class="btn btn-light" type="button">Remote</a>
+        </div>
+    </div>
+    <div class="card mt-2">
+        <div class="card-header">
+            <h5 class="text-center">Detecting Device Orientation</h5>
+            <h6 class="text-center text-primary" id="state">Connection State</h6>
+        </div>
+        <div class="card-body text-center">
+            <h5 id="alpha"></h5>
+            <h5 id="beta"></h5>
+            <h5 id="gamma"></h5>
+        </div>
+    </div>
+</div>
+@section Scripts{
+    <script src="~/lib/signalr/signalr.js"></script>
+    <script>
+        //Signalr Connection
+        const connection = new signalR.HubConnectionBuilder()
+            .withUrl('/tilthub')
+            .build();
+        connection.start();
+        $("#state").text(connection.state);
+        //Cube Part
+        function rotate(vec, axis, angle) {
+            var c = Math.cos(angle * Math.PI / 180.0),
+                s = Math.sin(angle * Math.PI / 180.0),
+                x = axis[0], y = axis[1], z = axis[2],
+
+                // rotation matrix form
+                rm00 = c + x * x * (1 - c),
+                rm10 = z * s + y * x * (1 - c),
+                rm20 = -y * s + z * x * (1 - c),
+                rm01 = -z * s + x * y * (1 - c),
+                rm11 = c + y * y * (1 - c),
+                rm21 = x * s + z * y * (1 - c),
+                rm02 = y * s + x * z * (1 - c),
+                rm12 = -x * s + y * z * (1 - c),
+                rm22 = c + z * z * (1 - c);
+
+            return Array(
+                rm00 * vec[0] + rm01 * vec[1] + rm02 * vec[2],
+                rm10 * vec[0] + rm11 * vec[1] + rm12 * vec[2],
+                rm20 * vec[0] + rm21 * vec[1] + rm22 * vec[2]
+            );
+        }
+
+        window.addEventListener("deviceorientation", function (e) {
+            function round(x) { return ((x * 10) >> 0) / 10.0; }
+            var b = round(e.beta),
+                g = -round(e.gamma),
+                a = round(e.alpha),
+                default_angle = 0; // assuming "portrait-primary" is the default screen orientation
+            $("#state").text(connection.state);
+            connection.invoke("Rotate3Axis", b.toString(), g.toString(), a.toString());
+            $("#alpha").text("Alpha "+a.toString());
+            $("#beta").text("Beta " +b.toString());
+            $("#gamma").text("Gamma " +g.toString());
+        }, false);
+    </script>
+}

@@ -1,0 +1,38 @@
+﻿@{ 
+    ViewData["Title"] = "Core";
+}
+<!doctype html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="~/css/bootstrap-litera.min.css" rel="stylesheet" />
+    <link href="~/css/Article-Clean.css" rel="stylesheet" />
+    <link href="~/css/Footer-Basic.css" rel="stylesheet" />
+    <link href="~/css/Highlight-Clean.css" rel="stylesheet" />
+    <title>@ViewData["Title"]</title>
+</head>
+<body id="myBody" style="background-image: url('/wwwroot/images/city.jpg');background-position:center;background-size:cover;">
+    <div class="mt-4"></div>
+    <!--http://m.joyceproject.com/images/for-chapter/1/fullsize/cloudcoveringsun1.jpg-->
+    <div class="container">
+        @RenderBody()
+    </div>
+    <div class="footer-basic bg-transparent">
+        <footer>
+            <div class="social"><a href="#"><i class="icon ion-social-instagram"></i></a><a href="#"><i class="icon ion-social-snapchat"></i></a><a href="#"><i class="icon ion-social-twitter"></i></a><a href="#"><i class="icon ion-social-facebook"></i></a></div>
+            <ul class="list-inline">
+                <li class="list-inline-item"><a href="#">Home</a></li>
+                <li class="list-inline-item"><a href="#">Services</a></li>
+                <li class="list-inline-item"><a href="#">About</a></li>
+                <li class="list-inline-item"><a href="#">Terms</a></li>
+                <li class="list-inline-item"><a href="#">Privacy Policy</a></li>
+            </ul>
+            <p class="copyright">Developed by PREETish © 2020</p>
+        </footer>
+    </div>
+    <script src="~/lib/jquery/jquery.min.js"></script>
+    @RenderSection("Scripts", required: false)
+</body>
+</html>

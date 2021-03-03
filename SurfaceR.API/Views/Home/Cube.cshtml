@@ -1,0 +1,26 @@
+﻿@{
+    ViewData["Title"] = "Cube";
+}
+
+<link href="/css/Cube.css" type="text/css" rel="stylesheet" />
+<a asp-controller="Home" asp-action="Index" class="text-white"><h1>Cube</h1></a>
+<div id="container">
+    <div id="cube">
+        <div class="pane front">1</div>
+        <div class="pane back">2</div>
+        <div class="pane right">3</div>
+        <div class="pane left">4</div>
+        <div class="pane top">5</div>
+        <div class="pane bottom">6</div>
+    </div>
+    <output>
+        Unfortunately, your device doesn't come with an orientation sensor.
+        However, this app should work with most modern smartphones running Firefox for
+        Android or Firefox OS.
+    </output>
+</div>
+
+@section Scripts{
+    <script src="~/lib/signalr/signalr.js"></script>
+    <script src="~/js/chat.js"></script>
+}

@@ -1,0 +1,63 @@
+﻿
+@{
+    ViewData["Title"] = "Surface1";
+}
+<style>
+    .background {
+        position: absolute;
+        top: 0;
+        right: 0;
+        left: 0;
+        bottom: 0;
+        background-image: url('/wwwroot/images/11.jpg');
+        background-size: cover;
+        background-position: center;
+        z-index: 1;
+    }
+    .glass-card {
+        position: absolute;
+        top: 0;
+        right: 0;
+        left: 0;
+        bottom: 0;
+        background-image: url('/wwwroot/images/11.jpg');
+        background-size: cover;
+        background-position: center;
+        filter: blur(5px) brightness(1.1);
+        z-index: 2;
+        animation: reveal ease .8s 1 forwards;
+    }
+
+    .box {
+        box-shadow: 6px 7px 10px 3px #0f7bcc, inset 2px 2px 2px 1px #0f7bcc, inset -2px -2px 2px 1px #0f7bcc;
+    }
+</style>
+<a asp-controller="Home" asp-action="Index" class="text-body"><h1>SurfaceR</h1></a>
+
+<div class="row">
+    <div class="col-md-4"></div>
+    <div class="col-md-4">
+        
+        <div id="plane" style="background-image: url('http://m.joyceproject.com/images/for-chapter/1/fullsize/cloudcoveringsun1.jpg')" class="text-white">
+            <div class="p-5"></div>
+            <div class="p-5"></div>
+            <div class="p-5">
+                <h5 class="text-center">SurfaceR Client</h5>
+            </div>
+            <div class="p-5">
+                <h5 id="x"></h5>
+                <h5 id="y"></h5>
+                <h5 id="z"></h5>
+            </div>
+            <div class="p-5">
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4"></div>
+</div>
+
+@section Scripts{
+    <script src="~/lib/signalr/signalr.js"></script>
+    <script src="~/js/chat.js"></script>
+
+}

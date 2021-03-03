@@ -1,0 +1,74 @@
+﻿
+@{
+    ViewData["Title"] = "Test";
+}
+
+<div class="bg-primary container">
+    <div class="row p-5">
+        <div class="col-md-4"></div>
+        <div class="col-md-4">
+            <div id="plane" class="bg-danger p-5 p-5 text-white text-center">
+                <h5>Center Text</h5>
+            </div>
+        </div>
+        <div class="col-md-4"></div>
+    </div>
+</div>
+<div class="bg-transparent">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                <label>Translate X</label>
+                <input id="tx" type="range" value="0" min="0" step="1" max="360" class="form-control t" />
+            </div>
+            <div class="form-group">
+                <label>Translate Y</label>
+                <input id="ty" type="range" value="0" min="0" step="1" max="360" class="form-control t" />
+            </div>
+            <div class="form-group">
+                <label>Translate Z</label>
+                <input id="tz" type="range" value="0" min="0" step="1" max="360" class="form-control t" />
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label>Rotate X</label>
+                <input id="rx" type="range" value="0" min="0" step="1" max="360" class="form-control t" />
+            </div>
+            <div class="form-group">
+                <label>Rotate Y</label>
+                <input id="ry" type="range" value="0" min="0" step="1" max="360" class="form-control t" />
+            </div>
+            <div class="form-group">
+                <label>Rotate Z</label>
+                <input id="rz" type="range" value="0" min="0" step="1" max="360" class="form-control t" />
+            </div>
+            <div class="form-group">
+                <label>Perspective</label>
+                <input id="ps" type="range" value="0" min="0" step="1" max="360" class="form-control t" />
+            </div>
+        </div>
+    </div>
+
+
+</div>
+@section Scripts{
+    <script>
+        jQuery.fn.translateR = function (x, y, z, p, tx, ty, tz) {
+            $(this).css({ 'transform': 'rotateX(' + x + 'deg)' + ' rotateY(' + y + 'deg)' + ' rotateZ(' + z + 'deg)' + ' perspective(' + p + 'px)' + 'translateX(' + tx + 'px)' + ' translateY(' + ty + 'px)' + ' translateZ(' + tz + 'px)' });
+            //$(this).css({ 'transform': 'translateX(' + x + 'px)' + ' translateY(' + y + 'px)' + ' translateZ(' + z + 'px)' + ' perspective(' + p + 'px)' });
+            $(this).css({ 'transition': '0.7s ease-in-out' });
+            return $(this);
+        };
+        $(".t").on('input', function () {
+            var x = $("#tx").val();
+            var y = $("#ty").val();
+            var z = $("#tz").val();
+            var per = $("#ps").val();
+            var rx = $("#rx").val();
+            var ry = $("#ry").val();
+            var rz = $("#rz").val();
+            $("#myBody").translateR(rx, ry, rz, per, x, y, z);
+        });
+    </script>
+}

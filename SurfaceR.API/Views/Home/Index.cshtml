@@ -1,0 +1,46 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+}
+<div class="highlight-clean">
+    <div class="container">
+        <div class="intro">
+            <h2 class="text-center">SurfaceR</h2>
+            <p class="text-center">A SignalR app which is synced&nbsp; with a smartphone orientation.&nbsp;</p>
+        </div>
+        <div class="buttons text-center">
+            <a class="btn btn-primary" role="button" asp-controller="Home" asp-action="Cube">See in action</a>
+            <a asp-controller="Home" asp-action="DeviceOrient" class="btn btn-light" type="button">Device Controller</a>
+            <a asp-controller="Home" asp-action="Controls" class="btn btn-light" type="button">Remote</a>
+        </div>
+    </div>
+</div>
+<div class="article-clean">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-10 col-xl-8 offset-lg-1 offset-xl-2">
+                <div class="jumbotron">
+                    <h4 class="text-primary">Instructions</h4>
+                    <h5>See in action - For viewing the cube/surface</h5>
+                    <h5>Remote - For controlling the Surface or Cube</h5>
+                    <h5>Device Controller - For Syncing the cube with Orientation/Gyroscope</h5>
+                </div>
+                <div class="intro">
+                    <h1 class="text-center">Read Me</h1>
+                    <p class="text-center"><span class="by">by</span> <a href="#">PREETish</a><span class="date">@DateTime.Now.ToShortDateString() </span></p>
+                    <div class="row">
+                        <img class="img-fluid d-block mx-auto" height="300" width="200" src="https://www.svgrepo.com/show/28737/smartphone.svg">
+                        <h4 class="font-weight-bold mt-3"> Synced with</h4>
+                        <img class="img-fluid d-block mx-auto" height="300" width="200" src="https://www.svgrepo.com/show/28708/monitor.svg">
+                    </div>
+
+                </div>
+                <div class="text">
+                    <h2>The orientation data of a device is synced with a Surface or a cube in the web page.</h2>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
